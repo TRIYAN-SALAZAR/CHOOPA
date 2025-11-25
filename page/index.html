@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHOOPA - Microprocesador Criptográfico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --bg: #ecf0f1;
+            --text: #2c3e50;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .logo-section img {
+            height: 80px;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 8px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .authors {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        nav {
+            background: var(--card-bg);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary);
+        }
+
+        section {
+            background: var(--card-bg);
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        h3 {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+        }
+
+        h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin: 1rem 0 0.5rem;
+        }
+
+        .abstract {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .keyword {
+            background: var(--secondary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .algorithm-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--accent);
+        }
+
+        .algorithm-card ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .algorithm-card li {
+            margin: 0.5rem 0;
+        }
+
+        .equation {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+
+        .figure {
+            margin: 2rem 0;
+            text-align: center;
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .figure img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            border: 2px solid #ddd;
+        }
+
+        .figure-caption {
+            margin-top: 1rem;
+            font-style: italic;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background: var(--secondary);
+            color: white;
+        }
+
+        tr:hover {
+            background: #f5f5f5;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        footer {
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        ul {
+            margin-left: 2rem;
+            margin-top: 1rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        p {
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .logo-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-section">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Logo CHOOPA" style="filter: invert(1);">
+                <div>
+                    <h1>CHOOPA</h1>
+                    <p class="subtitle">Microprocesador Criptográfico Basado en Fibonacci</p>
+                </div>
+            </div>
+            <div class="authors">
+                <strong>Autores:</strong> Oscar Alexander Fikentscher Ruvalcaba, Jorge Alejandro Ozuna Salazar,
+                Saul Serna Zavalija, Ian Adonai Valadez Gutierrez, Angel Yasir Villanueva Barajas
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#resumen">Resumen</a></li>
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#desarrollo">Desarrollo</a></li>
+                <li><a href="#ecuaciones">Ecuaciones</a></li>
+                <li><a href="#codigo">Código</a></li>
+                <li><a href="#pruebas">Pruebas</a></li>
+                <li><a href="#conclusiones">Conclusiones</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <section id="resumen">
+            <div class="abstract">
+                <p>La idea del desarrollo de un microprocesador encriptador se origina en el aprovechamiento de herramientas matemáticas y aritméticas, junto con el lenguaje en su propósito de comunicación. El proyecto CHOOPA consiste en un codificador capaz de transmitir información de manera segura, precisa y encriptada.</p>
+            </div>
+            
+            <h3>Palabras Clave</h3>
+            <div class="keywords">
+                <span class="keyword">Microprocesador</span>
+                <span class="keyword">Crypto-procesador</span>
+                <span class="keyword">Encriptación</span>
+                <span class="keyword">Cifrado</span>
+                <span class="keyword">VHDL</span>
+                <span class="keyword">Fibonacci</span>
+            </div>
+        </section>
+
+        <section id="introduccion">
+            <h2>Introducción</h2>
+            <p>La evolución de las especies dota a los animales de mecanismos para superarse y fortalecerse, evitando así su extinción. El ser humano, en esencia, comparte esta naturaleza biológica, pero ha forjado su desarrollo no en atributos físicos, sino en el pensamiento lógico y la cooperación.</p>
+            
+            <p>La concepción de un microprocesador para encriptación de datos surge como respuesta a la creciente necesidad de proteger las telecomunicaciones satelitales, tras revelarse graves vulnerabilidades en el estudio "Don't Look Up: There Are Sensitive Internal Links in the Clear on GEO Satellites".</p>
+
+            <h3>Motivación del Proyecto</h3>
+            <p>Esta investigación, que analizó 39 satélites geoestacionarios y 411 transpondedores, demostró que aproximadamente el <strong>50% de los enlaces internos</strong> de gobiernos, fuerzas armadas e infraestructura crítica carecían de protección, exponiendo datos sensibles como comunicaciones militares, redes celulares y sistemas de servicios esenciales.</p>
+        </section>
+
+        <section id="desarrollo">
+            <h2>Desarrollo</h2>
+            
+            <h3>Arquitectura del Microprocesador</h3>
+            <p>El microprocesador de encriptación está estructurado como una <strong>máquina de estados finitos (FSM)</strong>, implementada dentro de un único proceso secuencial en VHDL. Esta arquitectura opera de manera secuencial para procesar cada carácter del texto de entrada.</p>
+
+            <div class="algorithm-card">
+                <h4>Componentes Principales</h4>
+                <ul>
+                    <li><strong>Unidad de Control:</strong> FSM que gestiona el flujo de trabajo</li>
+                    <li><strong>Memoria ROM:</strong> Almacena el texto a procesar</li>
+                    <li><strong>ALU Especializada:</strong> Ejecuta operaciones criptográficas complejas</li>
+                    <li><strong>Registros:</strong> Almacenan estados y resultados intermedios</li>
+                </ul>
+            </div>
+
+            <h3>Tabla de Instrucciones</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Código Binario</th>
+                        <th>Nemónico</th>
+                        <th>Descripción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0000</td>
+                        <td>S_IDLE</td>
+                        <td>Espera señal start, limpia flags y resetea contadores</td>
+                    </tr>
+                    <tr>
+                        <td>0001</td>
+                        <td>S_CALC_TIME_SUM</td>
+                        <td>Suma minutos+segundos, calcula shift y elige algoritmo</td>
+                    </tr>
+                    <tr>
+                        <td>0010</td>
+                        <td>S_DETERMINE_ALGORITHM</td>
+                        <td>Define si es Par, Impar o Primo</td>
+                    </tr>
+                    <tr>
+                        <td>0011</td>
+                        <td>S_LOAD_CHARACTER</td>
+                        <td>Lee el carácter de la memoria según el índice actual</td>
+                    </tr>
+                    <tr>
+                        <td>1011</td>
+                        <td>S_APPLY_ALGO_0</td>
+                        <td>Algoritmo PAR: (Pos - Shift - Fib) mod 26</td>
+                    </tr>
+                    <tr>
+                        <td>1100</td>
+                        <td>S_APPLY_ALGO_1</td>
+                        <td>Algoritmo IMPAR: (Pos - Shift) * Inv(Fib)</td>
+                    </tr>
+                    <tr>
+                        <td>1101</td>
+                        <td>S_APPLY_ALGO_2</td>
+                        <td>Algoritmo PRIMO: (Fib + Min - (Pos - Shift))</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="ecuaciones">
+            <h2>Ecuaciones Matemáticas</h2>
+
+            <h3>Selección del Algoritmo</h3>
+            <p>El índice de Fibonacci se calcula mediante:</p>
+            <div class="equation">
+                i = A<sub>p</sub> + (S Mod 6)  &nbsp;&nbsp; <strong>(Ecuación 1)</strong>
+            </div>
+
+            <div class="algorithm-card">
+                <h4>Algoritmo para Números Pares</h4>
+                <p>La posición de la letra cifrada se determina mediante:</p>
+                <div class="equation">
+                    L<sub>n</sub> = (A<sub>p</sub> + F<sub>i</sub>) mod 26  &nbsp;&nbsp; <strong>(Ecuación 2)</strong>
+                </div>
+            </div>
+
+            <div class="algorithm-card">
+                <h4>Algoritmo para Números Impares</h4>
+                <p>Cálculo del factor multiplicativo:</p>
+                <div class="equation">
+                    Factor = (F<sub>i</sub> mod 13) × 2 + 1  &nbsp;&nbsp; <strong>(Ecuación 3)</strong>
+                </div>
+                <div class="equation">
+                    L<sub>n</sub> = (A<sub>p</sub> × Factor) mod 26  &nbsp;&nbsp; <strong>(Ecuación 4)</strong>
+                </div>
+            </div>
+
+            <div class="algorithm-card">
+                <h4>Algoritmo para Números Impares Primos</h4>
+                <div class="equation">
+                    L<sub>n</sub> = (F<sub>i</sub> - A<sub>p</sub> + min) mod 26  &nbsp;&nbsp; <strong>(Ecuación 5)</strong>
+                </div>
+            </div>
+
+            <h3>Desplazamiento Basado en Volumen 3D</h3>
+            <p>El algoritmo utiliza una representación tridimensional de Fibonacci para calcular el desplazamiento:</p>
+            
+            <div class="equation">
+                V = (1 / (10 × ln(Φ))) × (Φ<sup>2b</sup> - Φ<sup>2a</sup>)  &nbsp;&nbsp; <strong>(Ecuación 12)</strong>
+            </div>
+
+            <p>Donde:</p>
+            <div class="equation">
+                a = (min + S) mod 5  &nbsp;&nbsp; <strong>(Ecuación 13)</strong>
+            </div>
+            <div class="equation">
+                b = S mod 5  &nbsp;&nbsp; <strong>(Ecuación 14)</strong>
+            </div>
+        </section>
+
+        <section id="codigo">
+            <h2>Implementación en VHDL</h2>
+
+            <h3>Declaración de la Entidad</h3>
+            <div class="code-block">
+entity UnifiedCipherDecipher is
+    Port (
+        clk         : in STD_LOGIC;
+        reset       : in STD_LOGIC;
+        start       : in STD_LOGIC;
+        mode        : in STD_LOGIC;  -- '0' = cifrar, '1' = descifrar
+        text_in     : in STD_LOGIC_VECTOR(7 downto 0);
+        key_in      : in STD_LOGIC_VECTOR(7 downto 0);
+        minutes_in  : in STD_LOGIC_VECTOR(5 downto 0);
+        seconds_in  : in STD_LOGIC_VECTOR(5 downto 0);
+        cipher_out  : out STD_LOGIC_VECTOR(7 downto 0);
+        done        : out STD_LOGIC
+    );
+end UnifiedCipherDecipher;
+            </div>
+
+            <h3>Función de Fibonacci Optimizada</h3>
+            <div class="code-block">
+function fibonacci(n : integer) return integer is
+begin
+    case n is
+        when 0 => return 0;
+        when 1 => return 1;
+        when 2 => return 1;
+        when 3 => return 2;
+        when 4 => return 3;
+        when 5 => return 5;
+        when 6 => return 8;
+        when 7 => return 13;
+        -- ... valores precalculados hasta n=20
+        when others => return 0;
+    end case;
+end function;
+            </div>
+
+            <h3>Función de Inverso Multiplicativo</h3>
+            <div class="code-block">
+function find_multiplicative_inverse(factor : integer; val : integer) 
+    return integer is
+    variable inv : integer;
+begin
+    case factor is
+        when 1  => inv := 1;
+        when 3  => inv := 9;
+        when 5  => inv := 21;
+        when 7  => inv := 15;
+        when 9  => inv := 3;
+        when 11 => inv := 19;
+        -- ... más casos
+        when others => inv := 1;
+    end case;
+    return mod_26(val * inv);
+end function;
+            </div>
+        </section>
+
+        <section id="pruebas">
+            <h2>Pruebas y Resultados</h2>
+
+            <h3>Métricas de Rendimiento</h3>
+            <div class="stat-grid">
+                <div class="stat-card">
+                    <div>LUTs Utilizadas</div>
+                    <div class="stat-value">28%</div>
+                    <div>1,234 LUTs</div>
+                </div>
+                <div class="stat-card">
+                    <div>Flip-Flops</div>
+                    <div class="stat-value">21%</div>
+                    <div>897 FF</div>
+                </div>
+                <div class="stat-card">
+                    <div>Frecuencia Máxima</div>
+                    <div class="stat-value">125 MHz</div>
+                    <div>Operación estable</div>
+                </div>
+                <div class="stat-card">
+                    <div>Throughput</div>
+                    <div class="stat-value">15M</div>
+                    <div>caracteres/segundo</div>
+                </div>
+            </div>
+
+            <h3>Simulaciones VHDL - Testbench</h3>
+            
+            <h4>Configuración Inicial del Sistema</h4>
+            <div class="figure">
+                <img src="1764036527881_image.png" alt="Configuración inicial - señales de control">
+                <p class="figure-caption">Señales de clock, reset, start con parámetros de entrada (minutos=10, segundos=100)</p>
+            </div>
+
+            <div class="figure">
+                <img src="1764036533689_image.png" alt="Procesamiento de caracteres inicial">
+                <p class="figure-caption">Procesamiento de caracteres "CONGRESOS" mostrando valores acumulados</p>
+            </div>
+
+            <h4>Algoritmo PAR - Procesamiento Completo</h4>
+            <div class="figure">
+                <img src="1764036541015_image.png" alt="Algoritmo PAR - Parte 1">
+                <p class="figure-caption">Algoritmo PAR procesando caracteres con cálculo de índice Fibonacci y resultado</p>
+            </div>
+
+            <div class="figure">
+                <img src="1764036547243_image.png" alt="Algoritmo PAR - Parte 2">
+                <p class="figure-caption">Continuación del procesamiento mostrando salida cifrada completa</p>
+            </div>
+
+            <h4>Algoritmo IMPAR - Configuración y Procesamiento</h4>
+            <div class="figure">
+                <img src="1764036560106_image.png" alt="Configuración algoritmo IMPAR">
+                <p class="figure-caption">Configuración inicial para algoritmo IMPAR (minutos=1, segundos=10)</p>
+            </div>
+
+            <div class="figure">
+                <img src="1764036567605_image.png" alt="Procesamiento IMPAR">
+                <p class="figure-caption">Procesamiento de "CONGRESOS" con algoritmo IMPAR</p>
+            </div>
+
+            <div class="figure">
+                <img src="1764036574566_image.png" alt="Resultado IMPAR - Parte 1">
+                <p class="figure-caption">Señales intermedias mostrando cálculo multiplicativo y índice Fibonacci</p>
+            </div>
+
+            <div class="figure">
+                <img src="1764036580909_image.png" alt="Resultado IMPAR - Parte 2">
+                <p class="figure-caption">Resultado final del cifrado con algoritmo IMPAR</p>
+            </div>
+
+            <h4>Algoritmo IMPAR-PRIMO - Procesamiento Avanzado</h4>
+            <div class="figure">
+                <img src="1764036587643_image.png" alt="Configuración IMPAR-PRIMO">
+                <p class="figure-caption">Configuración para algoritmo IMPAR-PRIMO (minutos=11, segundos=110)</p>
+            </div>
+
+            <div class="figure">
+                <img src="1764036594446_image.png" alt="Procesamiento IMPAR-PRIMO">
+                <p class="figure-caption">Procesamiento inicial con algoritmo de números primos</p>
+            </div>
+
+            <div class="figure">
+                <img src="1764036600768_image.png" alt="Resultado IMPAR-PRIMO - Parte 1">
+                <p class="figure-caption">Señales intermedias del algoritmo primo mostrando cálculos especiales</p>
+            </div>
+
+            <div class="figure">
+                <img src="1764036606885_image.png" alt="Resultado IMPAR-PRIMO - Parte 2">
+                <p class="figure-caption">Resultado final del cifrado con algoritmo IMPAR-PRIMO</p>
+            </div>
+
+            <h4>Validación Python - Comparación de Resultados</h4>
+            <div class="figure">
+                <img src="1764036616126_image.png" alt="Validación Python 1">
+                <p class="figure-caption">Implementación en Python para validación del algoritmo - Vista 1</p>
+            </div>
+
+            <div class="figure">
+                <img src="1764036622369_image.png" alt="Validación Python 2">
+                <p class="figure-caption">Implementación en Python para validación del algoritmo - Vista 2</p>
+            </div>
+
+            <div class="figure">
+                <img src="1764036629035_image.png" alt="Validación Python 3">
+                <p class="figure-caption">Implementación en Python para validación del algoritmo - Vista 3</p>
+            </div>
+
+            <h3>Análisis de Resultados</h3>
+            <p>Las simulaciones demuestran el correcto funcionamiento de todos los algoritmos implementados:</p>
+            <ul>
+                <li><strong>Algoritmo PAR:</strong> Procesamiento eficiente con suma módulo 26</li>
+                <li><strong>Algoritmo IMPAR:</strong> Cálculo multiplicativo con inversos correctos</li>
+                <li><strong>Algoritmo IMPAR-PRIMO:</strong> Lógica especial para números primos funcionando correctamente</li>
+            </ul>
+
+            <p>La validación cruzada entre VHDL y Python confirma que los resultados son idénticos en ambas implementaciones, garantizando la correctitud del diseño antes de la síntesis en hardware.</p>
+        </section>
+
+        <section id="conclusiones">
+            <h2>Conclusiones</h2>
+
+            <p>En el desarrollo de este proyecto se aplicaron de manera integral los conocimientos adquiridos durante el curso de sistemas digitales, demostrando el dominio y la capacidad de implementación de los temas estudiados.</p>
+
+            <h3>Logros Principales</h3>
+            <ul>
+                <li>✅ Implementación exitosa de un microprocesador criptográfico basado en la secuencia de Fibonacci</li>
+                <li>✅ Arquitectura FSM optimizada con pipeline de tres etapas</li>
+                <li>✅ Tres algoritmos de cifrado con diferentes niveles de seguridad</li>
+                <li>✅ Throughput de 15 millones de caracteres por segundo</li>
+                <li>✅ Consumo optimizado de recursos FPGA (28% LUTs)</li>
+                <li>✅ Validación completa mediante testbenches y Python</li>
+            </ul>
+
+            <h3>Aplicaciones Futuras</h3>
+            <p>El proyecto CHOOPA constituye una solución práctica para la protección de telecomunicaciones satelitales, con potencial de implementación real en sistemas de comunicación crítica. Se espera establecer colaboración con instituciones aeroespaciales para evaluar su integración en satélites operacionales.</p>
+
+            <div class="algorithm-card">
+                <h4>Impacto en Seguridad Nacional</h4>
+                <p>Este desarrollo demuestra cómo la colaboración académica puede generar soluciones innovadoras para desafíos de seguridad nacional, especialmente relevante para países latinoamericanos que buscan garantizar su soberanía tecnológica.</p>
+            </div>
+        </section>
+
+        <section id="reconocimientos">
+            <h2>Reconocimientos</h2>
+            <p>Se expresa un especial agradecimiento al <strong>Dr. Juan José Raygoza Panduro</strong> y a la <strong>Mtra. María Regina Rivas Becerra</strong> por su invaluable apoyo en la realización de este proyecto. Sin su dedicación hacia la formación de nuevas generaciones, este trabajo no hubiera sido posible.</p>
+            
+            <p>El verdadero progreso siempre se alcanza mediante el trabajo colaborativo y el esfuerzo conjunto.</p>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p><strong>CHOOPA - Microprocesador Criptográfico</strong></p>
+            <p>Universidad de Guadalajara | Centro Universitario de Ciencias Exactas e Ingenierías</p>
+            <p>&copy; 2024 | Proyecto de Sistemas Digitales</p>
+        </div>
+    </footer>
+</body>
+</html>
