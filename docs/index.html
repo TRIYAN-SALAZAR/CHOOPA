@@ -10,7 +10,7 @@
     <header>
         <div class="container">
             <div class="logo-section">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Logo CHOOPA">
+                <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Logo CHOOPA"> -->
                 <div>
                     <h1>CHOOPA</h1>
                     <p class="subtitle">Microprocesador Criptográfico Basado en Fibonacci</p>
@@ -25,14 +25,19 @@
 
     <nav>
         <div class="container">
-            <ul>
-                <li><a href="#resumen">Resumen</a></li>
-                <li><a href="#introduccion">Introducción</a></li>
-                <li><a href="#desarrollo">Desarrollo</a></li>
-                <li><a href="#ecuaciones">Ecuaciones</a></li>
-                <li><a href="#codigo">Código</a></li>
-                <li><a href="#pruebas">Pruebas</a></li>
-                <li><a href="#conclusiones">Conclusiones</a></li>
+            <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#resumen" class="nav-link">Resumen</a></li>
+                <li><a href="#introduccion" class="nav-link">Introducción</a></li>
+                <li><a href="#desarrollo" class="nav-link">Desarrollo</a></li>
+                <li><a href="#ecuaciones" class="nav-link">Ecuaciones</a></li>
+                <li><a href="#codigo" class="nav-link">Código</a></li>
+                <li><a href="#pruebas" class="nav-link">Pruebas</a></li>
+                <li><a href="#conclusiones" class="nav-link">Conclusiones</a></li>
             </ul>
         </div>
     </nav>
@@ -344,5 +349,33 @@ end function;
             <p>&copy; 2024 | Proyecto de Sistemas Digitales</p>
         </div>
     </footer>
+
+    <script>
+        // Menú hamburguesa
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            });
+        });
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                menuToggle.classList.remove('active');
+            }
+        });
+    </script>
 </body>
 </html>
