@@ -4,298 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHOOPA - Microprocesador Criptográfico</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #2c3e50;
-            --secondary: #3498db;
-            --accent: #e74c3c;
-            --bg: #ecf0f1;
-            --text: #2c3e50;
-            --card-bg: #ffffff;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text);
-            background: var(--bg);
-        }
-
-        header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 2rem 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .logo-section {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .logo-section img {
-            height: 80px;
-            background: white;
-            padding: 0.5rem;
-            border-radius: 8px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-        }
-
-        .authors {
-            margin-top: 1rem;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-
-        nav {
-            background: var(--card-bg);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-        }
-
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--secondary);
-        }
-
-        section {
-            background: var(--card-bg);
-            margin: 2rem auto;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-
-        h2 {
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid var(--secondary);
-        }
-
-        h3 {
-            color: var(--secondary);
-            font-size: 1.5rem;
-            margin: 1.5rem 0 1rem;
-        }
-
-        h4 {
-            color: var(--primary);
-            font-size: 1.2rem;
-            margin: 1rem 0 0.5rem;
-        }
-
-        .abstract {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            font-style: italic;
-            margin-bottom: 2rem;
-        }
-
-        .keywords {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .keyword {
-            background: var(--secondary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .algorithm-card {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin: 1rem 0;
-            border-left: 4px solid var(--accent);
-        }
-
-        .algorithm-card ul {
-            margin-left: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .algorithm-card li {
-            margin: 0.5rem 0;
-        }
-
-        .equation {
-            background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 4px;
-            margin: 1rem 0;
-            text-align: center;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-        }
-
-        .figure {
-            margin: 2rem 0;
-            text-align: center;
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-        }
-
-        .figure img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            border: 2px solid #ddd;
-        }
-
-        .figure-caption {
-            margin-top: 1rem;
-            font-style: italic;
-            color: #666;
-            font-size: 0.95rem;
-        }
-
-        .code-block {
-            background: #2c3e50;
-            color: #ecf0f1;
-            padding: 1.5rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 1rem 0;
-            font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-
-        th, td {
-            padding: 1rem;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-
-        th {
-            background: var(--secondary);
-            color: white;
-        }
-
-        tr:hover {
-            background: #f5f5f5;
-        }
-
-        .stat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2rem;
-            font-weight: bold;
-            margin: 0.5rem 0;
-        }
-
-        footer {
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            padding: 2rem 0;
-            margin-top: 3rem;
-        }
-
-        ul {
-            margin-left: 2rem;
-            margin-top: 1rem;
-        }
-
-        li {
-            margin: 0.5rem 0;
-        }
-
-        p {
-            margin: 1rem 0;
-        }
-
-        @media (max-width: 768px) {
-            .logo-section {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo-section">
-                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Logo CHOOPA" style="filter: invert(1);">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Logo CHOOPA">
                 <div>
                     <h1>CHOOPA</h1>
                     <p class="subtitle">Microprocesador Criptográfico Basado en Fibonacci</p>
@@ -366,52 +81,54 @@
             </div>
 
             <h3>Tabla de Instrucciones</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Código Binario</th>
-                        <th>Nemónico</th>
-                        <th>Descripción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>0000</td>
-                        <td>S_IDLE</td>
-                        <td>Espera señal start, limpia flags y resetea contadores</td>
-                    </tr>
-                    <tr>
-                        <td>0001</td>
-                        <td>S_CALC_TIME_SUM</td>
-                        <td>Suma minutos+segundos, calcula shift y elige algoritmo</td>
-                    </tr>
-                    <tr>
-                        <td>0010</td>
-                        <td>S_DETERMINE_ALGORITHM</td>
-                        <td>Define si es Par, Impar o Primo</td>
-                    </tr>
-                    <tr>
-                        <td>0011</td>
-                        <td>S_LOAD_CHARACTER</td>
-                        <td>Lee el carácter de la memoria según el índice actual</td>
-                    </tr>
-                    <tr>
-                        <td>1011</td>
-                        <td>S_APPLY_ALGO_0</td>
-                        <td>Algoritmo PAR: (Pos - Shift - Fib) mod 26</td>
-                    </tr>
-                    <tr>
-                        <td>1100</td>
-                        <td>S_APPLY_ALGO_1</td>
-                        <td>Algoritmo IMPAR: (Pos - Shift) * Inv(Fib)</td>
-                    </tr>
-                    <tr>
-                        <td>1101</td>
-                        <td>S_APPLY_ALGO_2</td>
-                        <td>Algoritmo PRIMO: (Fib + Min - (Pos - Shift))</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Código Binario</th>
+                            <th>Nemónico</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0000</td>
+                            <td>S_IDLE</td>
+                            <td>Espera señal start, limpia flags y resetea contadores</td>
+                        </tr>
+                        <tr>
+                            <td>0001</td>
+                            <td>S_CALC_TIME_SUM</td>
+                            <td>Suma minutos+segundos, calcula shift y elige algoritmo</td>
+                        </tr>
+                        <tr>
+                            <td>0010</td>
+                            <td>S_DETERMINE_ALGORITHM</td>
+                            <td>Define si es Par, Impar o Primo</td>
+                        </tr>
+                        <tr>
+                            <td>0011</td>
+                            <td>S_LOAD_CHARACTER</td>
+                            <td>Lee el carácter de la memoria según el índice actual</td>
+                        </tr>
+                        <tr>
+                            <td>1011</td>
+                            <td>S_APPLY_ALGO_0</td>
+                            <td>Algoritmo PAR: (Pos - Shift - Fib) mod 26</td>
+                        </tr>
+                        <tr>
+                            <td>1100</td>
+                            <td>S_APPLY_ALGO_1</td>
+                            <td>Algoritmo IMPAR: (Pos - Shift) * Inv(Fib)</td>
+                        </tr>
+                        <tr>
+                            <td>1101</td>
+                            <td>S_APPLY_ALGO_2</td>
+                            <td>Algoritmo PRIMO: (Fib + Min - (Pos - Shift))</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
 
         <section id="ecuaciones">
@@ -577,64 +294,6 @@ end function;
                 <p class="figure-caption">Continuación del procesamiento mostrando salida cifrada completa</p>
             </div>
 
-            <h4>Algoritmo IMPAR - Configuración y Procesamiento</h4>
-            <div class="figure">
-                <img src="1764036560106_image.png" alt="Configuración algoritmo IMPAR">
-                <p class="figure-caption">Configuración inicial para algoritmo IMPAR (minutos=1, segundos=10)</p>
-            </div>
-
-            <div class="figure">
-                <img src="1764036567605_image.png" alt="Procesamiento IMPAR">
-                <p class="figure-caption">Procesamiento de "CONGRESOS" con algoritmo IMPAR</p>
-            </div>
-
-            <div class="figure">
-                <img src="1764036574566_image.png" alt="Resultado IMPAR - Parte 1">
-                <p class="figure-caption">Señales intermedias mostrando cálculo multiplicativo y índice Fibonacci</p>
-            </div>
-
-            <div class="figure">
-                <img src="1764036580909_image.png" alt="Resultado IMPAR - Parte 2">
-                <p class="figure-caption">Resultado final del cifrado con algoritmo IMPAR</p>
-            </div>
-
-            <h4>Algoritmo IMPAR-PRIMO - Procesamiento Avanzado</h4>
-            <div class="figure">
-                <img src="1764036587643_image.png" alt="Configuración IMPAR-PRIMO">
-                <p class="figure-caption">Configuración para algoritmo IMPAR-PRIMO (minutos=11, segundos=110)</p>
-            </div>
-
-            <div class="figure">
-                <img src="1764036594446_image.png" alt="Procesamiento IMPAR-PRIMO">
-                <p class="figure-caption">Procesamiento inicial con algoritmo de números primos</p>
-            </div>
-
-            <div class="figure">
-                <img src="1764036600768_image.png" alt="Resultado IMPAR-PRIMO - Parte 1">
-                <p class="figure-caption">Señales intermedias del algoritmo primo mostrando cálculos especiales</p>
-            </div>
-
-            <div class="figure">
-                <img src="1764036606885_image.png" alt="Resultado IMPAR-PRIMO - Parte 2">
-                <p class="figure-caption">Resultado final del cifrado con algoritmo IMPAR-PRIMO</p>
-            </div>
-
-            <h4>Validación Python - Comparación de Resultados</h4>
-            <div class="figure">
-                <img src="1764036616126_image.png" alt="Validación Python 1">
-                <p class="figure-caption">Implementación en Python para validación del algoritmo - Vista 1</p>
-            </div>
-
-            <div class="figure">
-                <img src="1764036622369_image.png" alt="Validación Python 2">
-                <p class="figure-caption">Implementación en Python para validación del algoritmo - Vista 2</p>
-            </div>
-
-            <div class="figure">
-                <img src="1764036629035_image.png" alt="Validación Python 3">
-                <p class="figure-caption">Implementación en Python para validación del algoritmo - Vista 3</p>
-            </div>
-
             <h3>Análisis de Resultados</h3>
             <p>Las simulaciones demuestran el correcto funcionamiento de todos los algoritmos implementados:</p>
             <ul>
@@ -682,7 +341,7 @@ end function;
         <div class="container">
             <p><strong>CHOOPA - Microprocesador Criptográfico</strong></p>
             <p>Universidad de Guadalajara | Centro Universitario de Ciencias Exactas e Ingenierías</p>
-            <p>&copy; 2025 | Proyecto de Sistemas Digitales</p>
+            <p>&copy; 2024 | Proyecto de Sistemas Digitales</p>
         </div>
     </footer>
 </body>
