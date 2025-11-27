@@ -284,6 +284,29 @@ p {
     line-height: 1.5;
 }
 
+/* Código con highlight.js y <pre><code> */
+pre {
+    background: #2c3e50; /* Mantener coherencia con .code-block */
+    color: #ecf0f1;
+    padding: 1rem;
+    border-radius: 8px; /* Igual que tarjetas y code-blocks */
+    overflow-x: auto;
+    margin: 1rem 0;
+}
+
+pre code {
+    font-family: 'Courier New', monospace;
+    font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+    line-height: 1.5;
+    display: block;
+}
+
+/* La clase .hljs la aplica highlight.js al <code> */
+.hljs {
+    background: transparent; /* Usar el fondo del contenedor <pre> */
+    border-radius: 8px; /* Esquinas redondeadas consistentes */
+}
+
 /* ==================== Tablas ==================== */
 .table-wrapper {
     overflow-x: auto;
