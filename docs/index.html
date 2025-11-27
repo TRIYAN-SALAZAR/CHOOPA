@@ -10,7 +10,7 @@
     <header>
         <div class="container">
             <div class="logo-section">
-                <!-- <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Logo CHOOPA"> -->
+                <img src="../imgs/logo.webp" alt="Logo CHOOPA">
                 <div>
                     <h1>CHOOPA</h1>
                     <p class="subtitle">Microprocesador Criptográfico Basado en Fibonacci</p>
@@ -248,7 +248,7 @@ end function;
             </div>
         </section>
 
-        <section id="pruebas">
+        < id="pruebas">
             <h2>Pruebas y Resultados</h2>
 
             <h3>Métricas de Rendimiento</h3>
@@ -276,31 +276,60 @@ end function;
             </div>
 
             <h3>Simulaciones VHDL - Testbench</h3>
-            
-            <h4>Configuración Inicial del Sistema</h4>
-            <div class="figure">
-                <img src="1764036527881_image.png" alt="Configuración inicial - señales de control">
-                <p class="figure-caption">Señales de clock, reset, start con parámetros de entrada (minutos=10, segundos=100)</p>
-            </div>
-
-            <div class="figure">
-                <img src="1764036533689_image.png" alt="Procesamiento de caracteres inicial">
-                <p class="figure-caption">Procesamiento de caracteres "CONGRESOS" mostrando valores acumulados</p>
-            </div>
 
             <h4>Algoritmo PAR - Procesamiento Completo</h4>
+            
             <div class="figure">
-                <img src="1764036541015_image.png" alt="Algoritmo PAR - Parte 1">
-                <p class="figure-caption">Algoritmo PAR procesando caracteres con cálculo de índice Fibonacci y resultado</p>
+                <img src="/imgs/MUESTRA INICIAL PAR.webp" alt="Configuración inicial - señales de control">
+                <p class="figure-caption">Señales de clock, reset, start con parámetros de entrada</p>
             </div>
 
             <div class="figure">
-                <img src="1764036547243_image.png" alt="Algoritmo PAR - Parte 2">
-                <p class="figure-caption">Continuación del procesamiento mostrando salida cifrada completa</p>
+                <img src="/imgs/cifrado par.webp" alt="Algoritmo PAR - CIFRADO">
+                <p class="figure-caption">Algoritmo PAR cifrado de la palabra "congreso concurso"</p>
+            </div>
+
+            <div class="figure">
+                <img src="/imgs/descifrado par.webp" alt="Algoritmo PAR - DESCIFRADO">
+                <p class="figure-caption">Algoritmo PAR descifrado de la palabra "congreso concurso"</p>
+            </div>
+
+            <h4>Algoritmo IMPAR-PRIMO - Procesamiento Completo</h4>
+            
+            <div class="figure">
+                <img src="/imgs/SEÑALES IMPAR_PRIMO.webp" alt="Configuración inicial - señales de control">
+                <p class="figure-caption">Señales de clock, reset, start con parámetros de entrada</p>
+            </div>
+
+            <div class="figure">
+                <img src="/imgs/CIFRADO IMPAR_PRIMO.webp" alt="Algoritmo IMPAR-PRIMO - CIFRADO">
+                <p class="figure-caption">Algoritmo IMPAR-PRIMO cifrado de la palabra "congreso concurso"</p>
+            </div>
+
+            <div class="figure">
+                <img src="/imgs/DESCIFRADO IMPAR_PRIMO.webp" alt="Algoritmo IMPAR-PRIMO - DESCIFRADO">
+                <p class="figure-caption">Algoritmo IMPAR-PRIMO descifrado de la palabra "congreso concurso"</p>
+            </div>
+            
+            <h4>Algoritmo IMPAR - Procesamiento Completo</h4>
+            
+            <div class="figure">
+                <img src="/imgs/SEÑALES IMPAR.webp" alt="Configuración inicial - señales de control">
+                <p class="figure-caption">Señales de clock, reset, start con parámetros de entrada</p>
+            </div>
+
+            <div class="figure">
+                <img src="/imgs/CIFRADO IMPAR.webp" alt="Algoritmo IMPAR - CIFRADO">
+                <p class="figure-caption">Algoritmo IMPAR cifrado de la palabra "congreso concurso"</p>
+            </div>
+
+            <div class="figure">
+                <img src="/imgs/DESCIFRADO IMPAR.webp" alt="Algoritmo IMPAR - DESCIFRADO">
+                <p class="figure-caption">Algoritmo IMPAR descifrado de la palabra "congreso concurso"</p>
             </div>
 
             <h3>Análisis de Resultados</h3>
-            <p>Las simulaciones demuestran el correcto funcionamiento de todos los algoritmos implementados:</p>
+            <p>Las simulaciones demuestran el correcto funcionamiento para:</p>
             <ul>
                 <li><strong>Algoritmo PAR:</strong> Procesamiento eficiente con suma módulo 26</li>
                 <li><strong>Algoritmo IMPAR:</strong> Cálculo multiplicativo con inversos correctos</li>
