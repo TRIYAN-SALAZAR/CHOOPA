@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CHOOPA - Microprocesador Criptográfico</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Highlight.js for code formatting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 </head>
 <body>
     <header>
@@ -191,8 +193,7 @@
             <h2>Implementación en VHDL</h2>
 
             <h3>Declaración de la Entidad</h3>
-            <div class="code-block">
-entity UnifiedCipherDecipher is
+            <pre><code class="language-vhdl">entity UnifiedCipherDecipher is
     Port (
         clk         : in STD_LOGIC;
         reset       : in STD_LOGIC;
@@ -205,12 +206,10 @@ entity UnifiedCipherDecipher is
         cipher_out  : out STD_LOGIC_VECTOR(7 downto 0);
         done        : out STD_LOGIC
     );
-end UnifiedCipherDecipher;
-            </div>
+end UnifiedCipherDecipher;</code></pre>
 
             <h3>Función de Fibonacci Optimizada</h3>
-            <div class="code-block">
-function fibonacci(n : integer) return integer is
+            <pre><code class="language-vhdl">function fibonacci(n : integer) return integer is
 begin
     case n is
         when 0 => return 0;
@@ -224,12 +223,10 @@ begin
         -- ... valores precalculados hasta n=20
         when others => return 0;
     end case;
-end function;
-            </div>
+end function;</code></pre>
 
             <h3>Función de Inverso Multiplicativo</h3>
-            <div class="code-block">
-function find_multiplicative_inverse(factor : integer; val : integer) 
+            <pre><code class="language-vhdl">function find_multiplicative_inverse(factor : integer; val : integer) 
     return integer is
     variable inv : integer;
 begin
@@ -244,8 +241,7 @@ begin
         when others => inv := 1;
     end case;
     return mod_26(val * inv);
-end function;
-            </div>
+end function;</code></pre>
         </section>
 
         < id="pruebas">
@@ -379,7 +375,19 @@ end function;
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Load VHDL language definition for proper reserved-word highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/vhdl.min.js"></script>
     <script>
+        // Inicializar resaltado de sintaxis con soporte para VHDL
+        if (window.hljs) {
+            // En algunos builds es necesario registrar explícitamente el lenguaje
+            if (typeof hljs.getLanguage === 'function' && !hljs.getLanguage('vhdl') && typeof hljsGrammar !== 'undefined') {
+                hljs.registerLanguage('vhdl', hljsGrammar);
+            }
+            hljs.highlightAll();
+        }
+
         // Menú hamburguesa
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
