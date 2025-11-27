@@ -6,15 +6,18 @@
 }
 
 :root {
-    --primary: #2c3e50;
-    --secondary: #3498db;
-    --accent: #e74c3c;
-    --bg: #ecf0f1;
-    --text: #2c3e50;
-    --card-bg: #ffffff;
-    --shadow-sm: 0 2px 4px rgba(0,0,0,0.1);
-    --shadow-md: 0 4px 8px rgba(0,0,0,0.1);
-    --shadow-lg: 0 8px 16px rgba(0,0,0,0.15);
+    --primary: #93c5fd; /* Azul claro para títulos en fondo oscuro */
+    --secondary: #60a5fa; /* Azul más vivo */
+    --accent: #f87171; /* Rojo suave para acentos */
+    --bg: #0f172a; /* Slate-900 */
+    --text: #e5e7eb; /* Gray-200 */
+    --muted-text: #94a3b8; /* Slate-400 */
+    --card-bg: #1e293b; /* Slate-800 */
+    --border: #334155; /* Slate-700 */
+    --table-row: #0b1220; /* muy oscuro para hover */
+    --shadow-sm: 0 2px 4px rgba(0,0,0,0.4);
+    --shadow-md: 0 4px 8px rgba(0,0,0,0.45);
+    --shadow-lg: 0 8px 16px rgba(0,0,0,0.5);
     --transition: all 0.3s ease;
 }
 
@@ -35,8 +38,8 @@ body {
 
 /* ==================== Header ==================== */
 header {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-    color: white;
+    background: linear-gradient(135deg, #0b1220 0%, #111827 100%);
+    color: var(--text);
     padding: 2rem 1rem;
     box-shadow: var(--shadow-md);
 }
@@ -53,10 +56,10 @@ header {
 
 .logo-section img {
     height: 60px;
-    background: white;
+    background: var(--card-bg);
     padding: 0.5rem;
     border-radius: 8px;
-    filter: invert(1);
+    filter: invert(0);
 }
 
 h1 {
@@ -110,7 +113,7 @@ nav .container {
 .menu-toggle span {
     width: 25px;
     height: 3px;
-    background: var(--primary);
+    background: var(--text);
     border-radius: 3px;
     transition: all 0.3s ease;
 }
@@ -153,7 +156,7 @@ nav .container {
 
 .nav-menu a:hover {
     color: var(--secondary);
-    background: rgba(52, 152, 219, 0.1);
+    background: rgba(96, 165, 250, 0.15);
 }
 
 /* ==================== Secciones ==================== */
@@ -163,6 +166,7 @@ section {
     padding: 1.5rem;
     border-radius: 8px;
     box-shadow: var(--shadow-md);
+    border: 1px solid var(--border);
 }
 
 h2 {
@@ -192,8 +196,8 @@ p {
 
 /* ==================== Abstract y Keywords ==================== */
 .abstract {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, #0b1220 0%, #111827 100%);
+    color: var(--text);
     padding: 1.5rem;
     border-radius: 8px;
     font-style: italic;
@@ -209,7 +213,7 @@ p {
 
 .keyword {
     background: var(--secondary);
-    color: white;
+    color: #0b1220;
     padding: 0.5rem 1rem;
     border-radius: 20px;
     font-size: clamp(0.8rem, 2vw, 0.9rem);
@@ -218,7 +222,7 @@ p {
 
 /* ==================== Cards y Elementos Especiales ==================== */
 .algorithm-card {
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
     padding: 1.5rem;
     border-radius: 8px;
     margin: 1rem 0;
@@ -236,23 +240,25 @@ p {
 
 /* ==================== Ecuaciones ==================== */
 .equation {
-    background: #f8f9fa;
+    background: #0b1220;
     padding: 1rem;
-    border-radius: 4px;
+    border-radius: 8px;
     margin: 1rem 0;
     text-align: center;
     font-family: 'Courier New', monospace;
     overflow-x: auto;
     font-size: clamp(0.85rem, 2vw, 1rem);
+    border: 1px solid var(--border);
 }
 
 /* ==================== Figuras e Imágenes ==================== */
 .figure {
     margin: 2rem 0;
     text-align: center;
-    background: #f8f9fa;
+    background: #0b1220;
     padding: 1rem;
     border-radius: 8px;
+    border: 1px solid var(--border);
 }
 
 .figure img {
@@ -260,21 +266,21 @@ p {
     height: auto;
     border-radius: 8px;
     box-shadow: var(--shadow-lg);
-    border: 2px solid #ddd;
+    border: 2px solid var(--border);
 }
 
 .figure-caption {
     margin-top: 1rem;
     font-style: italic;
-    color: #666;
+    color: var(--muted-text);
     font-size: clamp(0.85rem, 2vw, 0.95rem);
     padding: 0 1rem;
 }
 
 /* ==================== Código ==================== */
 .code-block {
-    background: #2c3e50;
-    color: #ecf0f1;
+    background: #0b1220;
+    color: #e5e7eb;
     padding: 1rem;
     border-radius: 8px;
     overflow-x: auto;
@@ -282,6 +288,7 @@ p {
     font-family: 'Courier New', monospace;
     font-size: clamp(0.75rem, 1.8vw, 0.9rem);
     line-height: 1.5;
+    border: 1px solid var(--border);
 }
 
 /* Código con highlight.js y <pre><code> */
@@ -318,23 +325,26 @@ table {
     border-collapse: collapse;
     margin: 1rem 0;
     min-width: 600px;
+    background: #0b1220;
+    border: 1px solid var(--border);
 }
 
 th, td {
     padding: 0.75rem;
     text-align: left;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--border);
     font-size: clamp(0.85rem, 2vw, 1rem);
+    color: var(--text);
 }
 
 th {
     background: var(--secondary);
-    color: white;
+    color: #0b1220;
     font-weight: 600;
 }
 
 tr:hover {
-    background: #f5f5f5;
+    background: var(--table-row);
 }
 
 /* ==================== Grid de Estadísticas ==================== */
@@ -346,11 +356,12 @@ tr:hover {
 }
 
 .stat-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, #0b1220 0%, #111827 100%);
+    color: var(--text);
     padding: 1.5rem;
     border-radius: 8px;
     text-align: center;
+    border: 1px solid var(--border);
 }
 
 .stat-value {
@@ -366,11 +377,12 @@ tr:hover {
 
 /* ==================== Footer ==================== */
 footer {
-    background: var(--primary);
-    color: white;
+    background: #0b1220;
+    color: var(--text);
     text-align: center;
     padding: 2rem 1rem;
     margin-top: 3rem;
+    border-top: 1px solid var(--border);
 }
 
 footer p {
