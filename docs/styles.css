@@ -15,6 +15,7 @@
     --card-bg: #1e293b; /* Slate-800 */
     --border: #334155; /* Slate-700 */
     --table-row: #0b1220; /* muy oscuro para hover */
+    --nav-height: 70px; /* altura aproximada del nav para compensar scroll */
     --shadow-sm: 0 2px 4px rgba(0,0,0,0.4);
     --shadow-md: 0 4px 8px rgba(0,0,0,0.45);
     --shadow-lg: 0 8px 16px rgba(0,0,0,0.5);
@@ -167,6 +168,15 @@ section {
     border-radius: 8px;
     box-shadow: var(--shadow-md);
     border: 1px solid var(--border);
+}
+
+/* Ajuste de anclas: evita que el título quede oculto bajo el nav sticky */
+section, h2[id], h3[id] {
+    scroll-margin-top: calc(var(--nav-height) + 16px);
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 h2 {
